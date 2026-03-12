@@ -8,26 +8,24 @@ public:
 
         if (isdigit(s[i])) {
             num = num * 10 + (s[i] - '0');
-            i++;
-            return solve(s, i, num, result);
+            return solve(s,i+=1, num, result);
         }
 
         if (s[i] == '[') {
-            i++;  
-            string sub = solve(s, i, 0, "");
+            string sub = solve(s, i+=1, 0, "");
 
-            i++; // skip ']'
+            // i++; // skip ']'
 
             while (num--)
                 result += sub;
 
-            return solve(s, i, 0, result);
+            return solve(s, i+=1, 0, result);
         }
 
         result += s[i];
-        i++;
+        // i++;
 
-        return solve(s, i, num, result);
+        return solve(s, i+=1, num, result);
     }
 
     string decodeString(string s) {
