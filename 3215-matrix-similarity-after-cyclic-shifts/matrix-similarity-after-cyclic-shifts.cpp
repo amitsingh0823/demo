@@ -7,19 +7,21 @@ public:
         k = k % n;
 
         for (int i = 0; i < m; i++) {
-            vector<int> temp = grid[i];  // copy row
+            for (int j = 0; j < n; j++) {
 
-            if (i % 2 == 0) {
-                // even row → left shift
-                rotate(temp.begin(), temp.begin() + k, temp.end());
-            } else {
-                // odd row → right shift
-                rotate(temp.begin(), temp.end() - k, temp.end());
-            }
+                int newCol;
 
-            // compare with original row
-            if (temp != grid[i]) {
-                return false;
+                if (i % 2 == 0) {
+                    // even row → left shift
+                    newCol = (j + k) % n;
+                } else {
+                    // odd row → right shift
+                    newCol = (j - k + n) % n;
+                }
+
+                if (grid[i][j] != grid[i][newCol]) {
+                    return false;
+                }
             }
         }
 
