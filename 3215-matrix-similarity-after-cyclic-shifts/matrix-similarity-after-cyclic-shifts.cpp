@@ -13,11 +13,11 @@ public:
 
                 if (i % 2 == 0) {
                     // even row → left shift
-                    newCol = (j - k + n) % n;
+                    newCol = (j + k) % n;
                 } else {
                     // odd row → right shift
-                   
-                    newCol = (j + k) % n;
+                    newCol = (j - k + n) % n;
+                    
                 }
 
                 if (grid[i][j] != grid[i][newCol]) {
